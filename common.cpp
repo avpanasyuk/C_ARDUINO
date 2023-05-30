@@ -85,7 +85,6 @@ namespace avp {
     va_end(ap);
     return Out;
   } // string_printf
-
 } // namespace avp
 
 

@@ -11,4 +11,7 @@ namespace avp {
   String urlencode(String str);
   String String_vprintf(const char *format, va_list ap);
   String String_printf(char const *format, ...);
+  void inline TogglePin(uint8_t pin) {
+    digitalWrite(pin, !digitalRead(pin));
+  } // TogglePin
 } // namespace avp

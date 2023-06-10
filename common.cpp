@@ -1,6 +1,7 @@
-#include "../C_ARDUINO/General.h"
-namespace avp {
+#include "C_General/General_C.h"
+#include "C_ARDUINO/General.h"
 
+namespace avp {
   static unsigned char h2int(char c) {
     if(c >= '0' && c <= '9') {
       return((unsigned char)c - '0');
@@ -33,7 +34,7 @@ namespace avp {
       } else {
         encodedString += c;
       }
-      yield();
+      // yield();
     }
     return encodedString;
   }
@@ -63,7 +64,7 @@ namespace avp {
         encodedString += code0;
         encodedString += code1;
       }
-      yield();
+      // yield();
     }
     return encodedString;
   }
@@ -78,13 +79,7 @@ namespace avp {
     return String(Buffer); // we do not write ending 0 byte
   } // string_vprintf
 
-  String String_printf(char const *format, ...) {
-    va_list ap;
-    va_start(ap, format);
-    String Out = String_vprintf(format, ap);
-    va_end(ap);
-    return Out;
-  } // string_printf
+  PRINTF_WRAPPER(String, String_printf, String_vprintf)
 } // namespace avp
 
 

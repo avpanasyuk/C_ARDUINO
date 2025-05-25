@@ -1,4 +1,5 @@
-#include "../C_ARDUINO/General.h"
+#include "../C_General/General.hpp"
+#include "General.h"
 
 static unsigned char h2int(char c) {
   if(c >= '0' && c <= '9') {
@@ -79,13 +80,7 @@ namespace avp {
     return String(Buffer); // we do not write ending 0 byte
   } // string_vprintf
 
-  String String_printf(char const *format, ...) {
-    va_list ap;
-    va_start(ap, format);
-    String Out = String_vprintf(format, ap);
-    va_end(ap);
-    return Out;
-  } // string_printf
+  PRINTF_WRAPPER(String, String_printf, String_vprintf);
 } // namespace avp
 
 

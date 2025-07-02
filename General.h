@@ -11,4 +11,8 @@ namespace avp {
   String urlencode(String str);
   String String_vprintf(const char *format, va_list ap);
   String String_printf(char const *format, ...);
+  template<int pin> // it is template so I do not have to pass parameter
+  void inline TogglePin() {
+    digitalWrite(pin, !digitalRead(pin));
+  } // TogglePin
 } // namespace avp

@@ -16,11 +16,6 @@ namespace avp {
   String urlencode(String str);
   String String_vprintf(const char *format, va_list ap);
   String String_printf(char const *format, ...);
-  template<int pin> // it is template so I do not have to pass parameter
-  void inline TogglePin() {
-    digitalWrite(pin, !digitalRead(pin));
-  } // TogglePin
-
   class Print : public ::Print {
   private:
     int (*putsFn)(const char *);
@@ -30,7 +25,7 @@ namespace avp {
 
     size_t write(uint8_t c) override {
       char buf[2] = {(char)c, '\0'};
-      return putsFn(buf);  
+      return putsFn(buf);
     }
 
     size_t write(const uint8_t *buffer, size_t size) override {

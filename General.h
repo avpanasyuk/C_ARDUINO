@@ -6,10 +6,10 @@
 
 // following define disables interrupts but enables them does not matter how function has returned
 #define PAUSE_INTERRUPTS     \
-  struct _t {                \
+  volatile struct _t {                \
     _t() { noInterrupts(); } \
     ~_t() { interrupts(); }  \
-  } _
+  } _;
 
 namespace avp {
   String urldecode(String str);
@@ -21,7 +21,7 @@ namespace avp {
     int (*putsFn)(const char *);
 
   public:
-    Print(int (*outputFunc)(const char *)) : putsFn(outputFunc) {}
+    explicit Print(int (*outputFunc)(const char *)) : putsFn(outputFunc) {}
 
     size_t write(uint8_t c) override {
       char buf[2] = {(char)c, '\0'};

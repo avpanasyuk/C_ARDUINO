@@ -16,6 +16,7 @@ namespace avp {
   String urlencode(String str);
   String String_vprintf(const char *format, va_list ap);
   String String_printf(char const *format, ...);
+
   class Print : public ::Print {
   private:
     int (*putsFn)(const char *);

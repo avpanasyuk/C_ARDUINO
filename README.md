@@ -12,6 +12,7 @@ normally vendored under a project's `src/`. Required whenever `C_ESP`'s
 |------|------------------|
 | `General.h` | `avp::urldecode`, `avp::urlencode`, `avp::String_printf`, `avp::TogglePin`, and the `PAUSE_INTERRUPTS` helper. |
 | `common.cpp` | Out-of-line implementations; add `+<C_ARDUINO/common.cpp>` to the consuming project's `build_src_filter`. |
+| `SDP8xx.hpp` | `avp::SDP8xx` — Sensirion SDP800/SDP810 differential-pressure sensor over `Wire` (header-only, static, no heap). Needs `avp::Crc8` from `C_General`. |
 
 ## Usage
 
